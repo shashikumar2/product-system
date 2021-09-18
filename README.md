@@ -10,19 +10,19 @@ This is an app where we will be able to select products, insert a promotion code
 
 ## Run Locally
 
-Clone the project
+Clone the project :
 
   git clone https://github.com/shashikumar2/product-system.git
 
 
-Go to the project directory
+Go to the project directory :
 
   cd my-project
 
-Install dependencies
+Install dependencies :
 
   npm install
 
-Start the app
+Start the app :
 
   npm  start
