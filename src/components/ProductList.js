@@ -14,7 +14,6 @@ class ProductList extends Component{
             availablePromocode:['PLSD123','PLSD456'],
             promocode: '',
             promoApplied: false
-
         }
     }
     
@@ -114,7 +113,6 @@ class ProductList extends Component{
     handleAppliedPromo = ()=>{
 
         if(this.state.promoApplied==false){
-
             let promoExist = false
             for(const promo of this.state.availablePromocode ){        
                 if(this.state.promocode == promo){
@@ -173,7 +171,6 @@ class ProductList extends Component{
     
 
     render() {
-        console.log('selectedProducts', this.state.selectedProducts)
         return (
             <div className="display">
                 <br/> 
@@ -234,14 +231,13 @@ class ProductList extends Component{
                 <br/> 
                 </div>
                 ) 
-            }                
+               }                
                 <h2>Promocode : <input 
                                 type="text"                                 
                                 value={this.state.promocode} 
                                 onChange={this.handlePromo}
                                 placeholder="ENTER PROMO CODE"                                                                                                                                                                                                 
                             /> {<button onClick={this.handleAppliedPromo}> Apply </button>} {<button onClick={this.handleClearPromo}> Clear Promo </button>}</h2> 
-
                 <h2>Total : ${this.state.itemsPrice}</h2> 
                 <button onClick={this.handleClear}>Clear Cart</button>
             </div>
