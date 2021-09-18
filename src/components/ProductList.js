@@ -26,7 +26,6 @@ class ProductList extends Component{
         }
 
         if(alreadyselected==false){
-
             const newProduct = {
                 id: product.id,
                 name: product.name,
@@ -209,10 +208,8 @@ class ProductList extends Component{
                         {
                             this.state.selectedProducts.map(ele=>{
                                 return (
-                                    <tr key={ele.id}>
-                                        
-                                        <td> {ele.name} </td>
-                                        
+                                    <tr key={ele.id}>                                        
+                                        <td> {ele.name} </td>                                        
                                         <td>{(ele.quantity>0) && ( <button onClick={() => { this.handleSub(ele)}}> - </button>)} {<input type ='text'  value = {ele.quantity} /> } {<button onClick={() => {this.handleAdd(ele)}}> + </button>}  </td>
                                     </tr>
                                 )
@@ -223,8 +220,7 @@ class ProductList extends Component{
                 <br/> 
                 </div>
                 ) 
-            }
-                
+            }                
                 <h2>Promocode : <input 
                                 type="text"                                 
                                 value={this.state.promocode} 
@@ -233,9 +229,7 @@ class ProductList extends Component{
                             /> {<button onClick={this.handleAppliedPromo}> Apply </button>}</h2> 
 
                 <h2>Total : ${this.state.itemsPrice}</h2> 
-
                 <button onClick={this.handleClear}>Clear Cart</button>
-
             </div>
         )
     }
