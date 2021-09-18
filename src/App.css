@@ -12,7 +12,8 @@
 
 .display {    
   width: 50%;
-  margin:auto;  
+  margin:auto; 
+  font-family: 'Times New Roman', Times, serif; 
 }
 
 th, td {
@@ -46,7 +47,7 @@ button:hover {
 }
 
 .selectedProducts input {
-  width: 10px;
+  width: 15px;
 }
 
 input {

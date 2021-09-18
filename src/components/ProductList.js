@@ -12,7 +12,9 @@ class ProductList extends Component{
             selectedProducts: [],
             itemsPrice: 0,
             availablePromocode:['PLSD123','PLSD456'],
-            promocode: ''
+            promocode: '',
+            promoApplied: false
+
         }
     }
     
@@ -110,41 +112,54 @@ class ProductList extends Component{
     }
     
     handleAppliedPromo = ()=>{
-        let promoExist = false
 
-        for(const promo of this.state.availablePromocode ){        
-            if(this.state.promocode == promo){
-                promoExist=true
+        if(this.state.promoApplied==false){
+
+            let promoExist = false
+            for(const promo of this.state.availablePromocode ){        
+                if(this.state.promocode == promo){
+                    promoExist=true
+                }
             }
-        }
 
-        if(promoExist == true){
-                if(this.state.promocode == 'PLSD123'){
-                    if(this.state.itemsPrice > 5000){
-                        this.setState(function(prevState){                            
-                            return {
-                                itemsPrice : prevState.itemsPrice * 0.9                               
-                            }
-                        })                           
-                    } else{
-                        alert('order above $5000 to get 10% discount')                        
-                    }
-                } 
-                
-                else if (this.state.promocode == 'PLSD456'){
-                    if(this.state.itemsPrice > 10000){
-                        this.setState(function(prevState){                            
-                            return {
-                                itemsPrice : prevState.itemsPrice * 0.85
-                            }
-                        })                            
-                    } else{
-                        alert('order above $10000 to get 15% discount')                        
-                    }
-                } 
-        } else {
-            alert('promocode doesnt exist')
-        }            
+            if(promoExist == true){
+                    if(this.state.promocode == 'PLSD123'){
+                        if(this.state.itemsPrice > 5000){
+                            this.setState(function(prevState){                            
+                                return {
+                                    itemsPrice : prevState.itemsPrice * 0.9, 
+                                    promoApplied : true                             
+                                }
+                            })                           
+                        } else{
+                            alert('order above $5000 to get 10% discount')                        
+                        }
+                    } 
+                    
+                    else if (this.state.promocode == 'PLSD456'){
+                        if(this.state.itemsPrice > 10000){
+                            this.setState(function(prevState){                            
+                                return {
+                                    itemsPrice : prevState.itemsPrice * 0.85,
+                                    promoApplied : true  
+                                }
+                            })                            
+                        } else{
+                            alert('order above $10000 to get 15% discount')                        
+                        }
+                    } 
+            } else {
+                alert('promocode doesnt exist')
+            } 
+        }           
+    }
+
+    handleClearPromo = () => {
+        this.setState(                       
+             {
+                promoApplied : false,
+                promocode: ''               
+            })    
     }
 
     handleClear = () => {
@@ -192,12 +207,13 @@ class ProductList extends Component{
                 </div>
                 <br/><br/>  
             {
-                (this.state.selectedProducts.length > 0) && (
+                (((this.state.selectedProducts.length > 0) && (this.state.promoApplied==false)) &&
                 <div className="selectedProducts">
                 <table >
                     <thead>
                         <tr>
                             <th>Selected product</th>
+                            <th>Price in $ (per month)</th>
                             <th>Quantity</th>                                   
                         </tr>
                     </thead>
@@ -206,7 +222,8 @@ class ProductList extends Component{
                             this.state.selectedProducts.map(ele=>{
                                 return (
                                     <tr key={ele.id}>                                        
-                                        <td> {ele.name} </td>                                        
+                                        <td> {ele.name} </td>   
+                                        <td> {ele.price} </td>                                     
                                         <td>{(ele.quantity>0) && ( <button onClick={() => { this.handleSub(ele)}}> - </button>)} {<input type ='text'  value = {ele.quantity} /> } {<button onClick={() => {this.handleAdd(ele)}}> + </button>}  </td>
                                     </tr>
                                 )
@@ -223,7 +240,7 @@ class ProductList extends Component{
                                 value={this.state.promocode} 
                                 onChange={this.handlePromo}
                                 placeholder="ENTER PROMO CODE"                                                                                                                                                                                                 
-                            /> {<button onClick={this.handleAppliedPromo}> Apply </button>}</h2> 
+                            /> {<button onClick={this.handleAppliedPromo}> Apply </button>} {<button onClick={this.handleClearPromo}> Clear Promo </button>}</h2> 
 
                 <h2>Total : ${this.state.itemsPrice}</h2> 
                 <button onClick={this.handleClear}>Clear Cart</button>
