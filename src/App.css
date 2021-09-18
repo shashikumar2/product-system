@@ -1,0 +1,56 @@
+.navbar {
+  margin: 0;
+  padding: 0;
+  border: 2px aqua solid ; 
+  background-color: aqua;  
+  height: 35px;;  
+}
+
+.navbar h2{
+  margin-top: auto;
+}
+
+.display {    
+  width: 50%;
+  margin:auto;  
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;  
+}
+
+th {
+  height: 5px;
+  font-size: 20px;
+  background-color: #f2f2f2;
+}
+
+.products {
+  color: maroon; 
+}
+
+.selectedProducts{
+  color:crimson;
+}
+
+button {
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: cyan;
+}
+
+.selectedProducts input {
+  width: 10px;
+}
+
+input {
+  border:2px solid;
+  padding: 5px;
+  text-align: center;
+}
