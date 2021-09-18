@@ -12,7 +12,7 @@ This is an app where we will be able to select products, insert a promotion code
 
 Clone the project
 
-  git clone https://github.com/shashikumar2/product-system
+  git clone https://github.com/shashikumar2/product-system.git
 
 
 Go to the project directory
