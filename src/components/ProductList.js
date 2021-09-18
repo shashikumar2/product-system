@@ -41,8 +41,7 @@ class ProductList extends Component{
         }             
     }
     
-    handleAdd = (prod)=>{
-        
+    handleAdd = (prod)=>{        
         this.setState(function(prevState){
             return{
                 selectedProducts :prevState.selectedProducts.map(function(product){
@@ -70,7 +69,6 @@ class ProductList extends Component{
 
 
     handleSub = (prod)=>{
-
         this.setState(function(prevState){            
             return{
                 selectedProducts :prevState.selectedProducts.map(function(product){
@@ -90,8 +88,7 @@ class ProductList extends Component{
                     itemsPrice : prevState.itemsPrice - prod.price
                 }
             })
-        } else{
-        
+        } else{        
             this.setState(function(prevState){
                 let currentProductPrice
                 for(const product of prevState.selectedProducts){
