@@ -157,7 +157,21 @@ class ProductList extends Component{
              {
                 promoApplied : false,
                 promocode: ''               
-            })    
+            }) 
+            
+        if(this.state.promocode == 'PLSD123'){
+            this.setState(function(prevState){                            
+                return {
+                    itemsPrice : prevState.itemsPrice/0.9                          
+                }
+            })  
+        } else if (this.state.promocode == 'PLSD456'){  
+            this.setState(function(prevState){                            
+                return {
+                    itemsPrice : prevState.itemsPrice/0.85                          
+                }
+            })  
+        }    
     }
 
     handleClear = () => {
@@ -166,7 +180,7 @@ class ProductList extends Component{
                 selectedProducts: [],
                 promocode: '',
                 itemsPrice: 0
-            })    
+            })             
     }
     
 
