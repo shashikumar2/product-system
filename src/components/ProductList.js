@@ -111,7 +111,6 @@ class ProductList extends Component{
     }
     
     handleAppliedPromo = ()=>{
-
         if(this.state.promoApplied==false){
             let promoExist = false
             for(const promo of this.state.availablePromocode ){        
@@ -179,12 +178,14 @@ class ProductList extends Component{
              {
                 selectedProducts: [],
                 promocode: '',
-                itemsPrice: 0
+                itemsPrice: 0,
+                promoApplied: false
             })             
     }
     
 
     render() {
+        console.log('selectedProducts', this.state.selectedProducts)
         return (
             <div className="display">
                 <br/> 
