@@ -89,7 +89,7 @@ class ProductList extends Component{
                     itemsPrice : prevState.itemsPrice - prod.price
                 }
             })
-        } else{        
+        }else{        
             this.setState(function(prevState){
                 let currentProductPrice
                 for(const product of prevState.selectedProducts){
@@ -97,7 +97,7 @@ class ProductList extends Component{
                         currentProductPrice=product.price
                     }
                 }
-                return {
+                return{
                     itemsPrice : prevState.itemsPrice - (currentProductPrice)
                 }
             }) 
