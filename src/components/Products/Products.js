@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import ProductsDisplay from './ProductsDisplay'
+import SelectedProducts from './SelectedProducts'
+import Calculation from './Calculation'
 
-class ProductList extends Component{
+class Products extends Component{
     constructor() {
         super() 
         this.state = {
@@ -187,76 +190,17 @@ class ProductList extends Component{
     render() {
         return (
             <div className="display">
-              <br/> 
-               <div className="products">
-                <table >
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Price in $ (per month)</th>
-                            <th>Select</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.products.map(ele=>{
-                                return (
-                                    <tr key={ele.id}>
-                                        <td> {ele.id} </td>
-                                        <td> {ele.name} </td>
-                                        <td> {ele.price} </td>
-                                        <td> {<button onClick={() => {
-                                            this.handleSelect(ele)
-                                            }}> Select </button>} </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table> 
-                </div>
-                <br/><br/>  
-            {
+               <ProductsDisplay products={this.state.products} handleSelect={this.handleSelect} />
+               {
                 (((this.state.selectedProducts.length > 0) && (this.state.promoApplied==false)) &&
-                <div className="selectedProducts">
-                <table >
-                    <thead>
-                        <tr>
-                            <th>Selected product</th>
-                            <th>Price in $ (per month)</th>
-                            <th>Quantity</th>                                   
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.selectedProducts.map(ele=>{
-                                return (
-                                    <tr key={ele.id}>                                        
-                                        <td> {ele.name} </td>   
-                                        <td> {ele.price} </td>                                     
-                                        <td>{(ele.quantity>0) && ( <button onClick={() => {this.handleSub(ele)}}> - </button>)} {<input type ='text'  value = {ele.quantity} /> } {<button onClick={() => {this.handleAdd(ele)}}> + </button>}  </td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-                <br/> 
-                </div>
+                  <SelectedProducts selectedProducts={this.state.selectedProducts} handleAdd={this.handleAdd}/>
                 ) 
                }                
-                <h2>Promocode : <input 
-                                type="text"                                 
-                                value={this.state.promocode} 
-                                onChange={this.handlePromo}
-                                placeholder="ENTER PROMO CODE"                                                                                                                                                                                                 
-                            /> {<button onClick={this.handleAppliedPromo}> Apply </button>} {<button onClick={this.handleClearPromo}> Clear Promo </button>}</h2> 
-                <h2>Total : ${this.state.itemsPrice}</h2> 
+                <Calculation promocode={this.state.promocode} handlePromo={this.handlePromo} handleAppliedPromo={this.handleAppliedPromo} handleClearPromo={this.handleClearPromo} itemsPrice={this.state.itemsPrice}/>
                 <button onClick={this.handleClear}>Clear Cart</button>
             </div>
         )
     }
 }
 
-export default ProductList
+export default Products

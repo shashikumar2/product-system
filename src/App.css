@@ -1,6 +1,4 @@
-.navbar {
-  margin: 0;
-  padding: 0;
+.navbar {  
   border: 2px aqua solid ; 
   background-color: aqua;  
   height: 35px;
@@ -12,7 +10,7 @@
 
 .display {    
   width: 50%;
-  margin:auto; 
+  margin: auto;
   font-family: 'Times New Roman', Times, serif; 
 }
 
@@ -30,10 +28,13 @@ th {
 
 .products {
   color: maroon; 
+  margin-top: 1%;
+  margin-bottom: 5%;
 }
 
 .selectedProducts{
   color:crimson;
+  margin-bottom: 10%;
 }
 
 button {
