@@ -185,10 +185,9 @@ class ProductList extends Component{
     
 
     render() {
-        console.log('selectedProducts', this.state.selectedProducts)
         return (
             <div className="display">
-                <br/> 
+              <br/> 
                <div className="products">
                 <table >
                     <thead>
@@ -236,7 +235,7 @@ class ProductList extends Component{
                                     <tr key={ele.id}>                                        
                                         <td> {ele.name} </td>   
                                         <td> {ele.price} </td>                                     
-                                        <td>{(ele.quantity>0) && ( <button onClick={() => { this.handleSub(ele)}}> - </button>)} {<input type ='text'  value = {ele.quantity} /> } {<button onClick={() => {this.handleAdd(ele)}}> + </button>}  </td>
+                                        <td>{(ele.quantity>0) && ( <button onClick={() => {this.handleSub(ele)}}> - </button>)} {<input type ='text'  value = {ele.quantity} /> } {<button onClick={() => {this.handleAdd(ele)}}> + </button>}  </td>
                                     </tr>
                                 )
                             })
